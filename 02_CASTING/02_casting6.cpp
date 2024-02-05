@@ -6,10 +6,15 @@ int main()
 	
 	const int* p = &n;
 
-	int* p1 = p;
-	int* p2 = static_cast<int*>(p);	
+	// int* p1 = p;
+	// int* p2 = static_cast<int*>(p);	
+	// int* p2 = reinterpret_cast<int*>(p);
+
+	int* p2 = const_cast<int*>(p);  // 
 
 
 	const int c = 10;
+
+	int* p3 = const_cast<
 	
 }
