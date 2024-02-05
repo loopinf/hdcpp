@@ -1,6 +1,8 @@
 // 67page
 #include <iostream>
 
+// why looks complicated?
+// rect type 
 int get_rect_area(int left, int top, int right, int bottom)
 {
 	return (right - left) * (bottom - top);

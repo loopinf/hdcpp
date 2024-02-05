@@ -11,6 +11,8 @@ int main()
 	
 
 	std::cout << n << std::endl; // 30
+	std::cout << &n << std::endl;
+	std::cout << &r << std::endl;
 
 }
 

@@ -1,4 +1,5 @@
 // pointer vs reference
+#include <iostream>
 int main()
 {
 	int  n = 10;
@@ -7,8 +8,8 @@ int main()
 	int* p1 = &n;
 	int& r1 = n;
 
-	int* p2;
-	int& r2;
+	int* p2;  // no init possible.
+	// int& r2;  // error. 
 	
 	// #2. 대상체(n) 에 접근
 	*p1 = 20;
@@ -16,8 +17,13 @@ int main()
 	
 	// #3. 
 	int n2 = 20;
-	p1 = &n2;
+	p1 = &n2;   // p1 point to different 
 	r1 = n2;
+
+	std::cout << r1 << std::endl; 
+	std::cout << &r1 << std::endl; 
+	std::cout << &p1 << std::endl;
+
 }
 
 // pointer 보다 reference 가 안전 하다.

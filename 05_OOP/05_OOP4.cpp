@@ -20,8 +20,11 @@ int main()
 
 
 	// #2. 용어
-	int n1 = 10; 	// 
+	int n1 = 10; 	// Variable
 	n1 = 20;		
 
-	Rect r = { 1, 1, 10, 10 };	
+	Rect r = { 1, 1, 10, 10 };	 // Object
+	// Object : all things
+	// primitive type: int, float, double, char, bool  instance on memory : variable
+	// user defined type : struct, class, enum, union instance on memory : object 
 }

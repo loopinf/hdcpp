@@ -14,7 +14,7 @@
 
 // #3. 표준 출력
 #include <iostream>	// C++98 시절 부터 제공되는 표준 출력 사용(std::cout)
-// #include <println>	// C++23 에서 추가되는 새로운 출력(std::println)
+// #include <print>	// C++23 에서 추가되는 새로운 출력(std::println)
 
 int main()
 {
