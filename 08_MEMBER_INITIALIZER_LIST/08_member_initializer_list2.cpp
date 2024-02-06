@@ -12,6 +12,7 @@ int main()
 	b = 10;		// 대입(assignment)
 
 	// primitive type, initialize, assignment are nearly all the same 
+	// but, UDT (User Defined)
 
 	//========================================================
 	// std::string : class 문법으로 만들어져 있는 타입입니다.(STL)
@@ -25,5 +26,7 @@ int main()
 
 
 	// 핵심 : user define type 은 항상, 대입 보다 초기화로 값을 넣는것이 좋습니다.
+
+	// const int
 
 }

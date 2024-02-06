@@ -5,7 +5,7 @@ class Person1
 	std::string name;
 	int age;
 public:
-	Person1(const std::string& n, int a) 
+	Person1(const std::string& n, int a)  // : name() 
 	{
 		name = n;	
 		age = a;

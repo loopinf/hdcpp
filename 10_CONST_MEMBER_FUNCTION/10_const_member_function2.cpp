@@ -1,3 +1,9 @@
+// const member function; must !
+// --> all the member function that does not change the object should be const
+// => usually, 
+	// getter function is more likely to be inside the object than setter function
+//
+
 class Rect
 {
 	int x, y, w, h;

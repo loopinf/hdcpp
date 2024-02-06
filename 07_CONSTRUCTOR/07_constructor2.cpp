@@ -7,7 +7,6 @@ private:
 	std::string name;
 	int  age;
 public:
-	// 핵심 1. class 생성자는 여러개 만들수 있다.
 	// keypoint : same with class name  
 	Person(const std::string& n, int a)
 	{
@@ -33,5 +32,7 @@ int main()
 {
 	Person p1("kim", 28); // 생성자1 호출
 	Person p2;			  // 생성자2 호출
+	Person p3 {"kim",22}
+	
 
 } 

@@ -18,6 +18,7 @@ public:
     void set_day(int d) { day = d; }
     
     // other useful member function 
+    // => const member function
     Date after_days(int n) const
     {
         Date temp(year, month, day + n); //  wrong

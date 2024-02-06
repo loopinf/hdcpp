@@ -12,6 +12,8 @@ public:
 	{
 		x = x;		 //  left
 		this->x = x; // this->x = x;
+
+		std::cout << this
 	}
 
 	// #2. this 를 반환

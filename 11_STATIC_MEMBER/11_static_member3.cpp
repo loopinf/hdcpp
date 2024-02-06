@@ -36,5 +36,9 @@ int main()
 	Car c2;
 	std::cout << c1.cnt << std::endl;	
 	std::cout << c2.cnt << std::endl;	
+    // how to access static member data
+    // 1. ClassName::member
+    // 2. ObjectName.member
+    // C# or Java, Car.cnt
 	
 }
