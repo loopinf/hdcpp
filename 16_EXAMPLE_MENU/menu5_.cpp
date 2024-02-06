@@ -59,16 +59,19 @@ public:
 };
 int main()
 {
-    MenuItem m1("tuna 김밥", 11);
-    MenuItem m2("don 김밥", 12);
-    PopupMenu kimbab("김밥s");
-    kimbab.add(&m1);
-    kimbab.add(&m2);
+    PopupMenu* root = new PopupMenu("Root Menu");
+    PopupMenu* pm1 = new PopupMenu("Change color");
+    PopupMenu* pm2 = new PopupMenu("Change resolution");
 
-    MenuItem m9("라면", 21);
-    PopupMenu pm("Today's Lunch Menu");
-    pm.add(&kimbab);
-    pm.add(&m9);
+    root->add(pm1);
+    root->add(pm2);
 
-    pm.command();
+    pm1->add(new MenuItem("RED", 11));
+    pm1->add(new MenuItem("GREEN", 12));
+
+    pm2->add(new MenuItem("1024x768", 21));
+    pm2->add(new MenuItem("1920x1080", 22));
+
+    root->command();
 }
+
