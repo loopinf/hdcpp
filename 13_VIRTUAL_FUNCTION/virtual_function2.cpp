@@ -11,9 +11,13 @@ public:
 	// => virtual 을 붙이지 않아도 기반 클래스에서 virtual 로 선언되었기때문에 virtual 입니다.
 	virtual void Draw()  {};
 
-	// #2. 
+	// #2. virtual function override , typo will make new function
 //	virtual void draw() {};
 //	virtual void Move(int n) {};
+
+	// override 
+	virtual void draw() override {};
+	virtual void Move(int n) override {};
 };
 
 int main()

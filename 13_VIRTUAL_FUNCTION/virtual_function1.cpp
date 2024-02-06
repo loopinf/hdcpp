@@ -25,10 +25,12 @@ int main()
 
 	Animal* p = &d;		
 
-	a.Cry1();
-	d.Cry1(); 
+	a.Cry1(); // 1
+	d.Cry1(); // 2
 
-	p->Cry1();
+	p->Cry1(); // 1 ? 2
+				// C++/C# : call 1
+				// Java, Python, Swift, kotlin, object-c : call 2 
 
 }
 
