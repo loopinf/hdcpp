@@ -17,15 +17,16 @@ class Derived : public Base
 public:
 	void foo()
 	{
-		a = 0;	
-		b = 0;  
-		c = 0;  
+		// a = 0;	 // error
+		set_a(0);
+		b = 0;  // ok
+		c = 0;  // ok
 	}
 };
 int main()
 {
-	Base base;
-	base.a = 0; 
-	base.b = 0; 
-	base.c = 0; 
+	Derived derv;
+	derv.a = 0;  // error. private
+	derv.b = 0;  // error. protected
+	derv.c = 0; 
 }

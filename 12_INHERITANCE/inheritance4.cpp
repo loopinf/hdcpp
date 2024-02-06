@@ -13,8 +13,12 @@ public:
 class Derived : public Base
 {
 public:
-	Derived()      {}
-	Derived(int a) {}
+	// Derived()      {}   // Derived() : Base()  => error
+	// Derived(int a) {}   // Derived(int a) : Base()  => error
+	
+	// if no default constructor in Base, you must call Base(int) in Derived
+	Derived() 	   : Base(0){}
+	Derived(int a) : Base(a) {}
 };
 
 int main()

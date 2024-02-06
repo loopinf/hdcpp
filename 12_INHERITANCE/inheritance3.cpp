@@ -12,12 +12,14 @@ public:
 class Derived : public Base
 {
 public:
-	Derived()					
+    // User 					// compiler changes like this: 
+	Derived()					// Derived() : Base()
 	{ 
 		std::cout << "Derived()" << std::endl; 
 	} 
 
-	Derived(int a)			
+
+	Derived(int a)			// Derived(int a) : Base()
 	{						
 		std::cout << "Derived(int)" << std::endl; 
 	}
@@ -25,12 +27,14 @@ public:
 	~Derived()      
 	{ 
 		std::cout << "~Derived()" << std::endl; 
+		// destructor of Base is called automatically
+		// Base::~Base();
 	}
 };
 int main()
 {
-	Derived d1;	
-//	Derived d2(5);
+	Derived d1;	        // call Derived::Derived()
+//	Derived d2(5);  	// call Derived::Derived(int)
 }
 
 
