@@ -37,9 +37,11 @@ int main()
         }
         else if (cmd == 9)
         {
+            // Shape no draw() function
+            // OCP : Open Close Principle not met
+            // 
             for (auto e : v) // e : Shape*
             {
-
                 if (e --> Rect)
                 {
                     static_cast<Rect*>(e)->draw();

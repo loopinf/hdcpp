@@ -15,7 +15,7 @@ public:
 //	virtual void draw() {};
 //	virtual void Move(int n) {};
 
-	// override 
+	// override C++11 
 	virtual void draw() override {};
 	virtual void Move(int n) override {};
 };
