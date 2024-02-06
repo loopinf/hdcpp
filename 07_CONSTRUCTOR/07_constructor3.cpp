@@ -1,7 +1,6 @@
 // 5_생성자3 - 78page ~
 #include <iostream>
 
-// ~ 내일 오전까지 : 한개의 class 를 만들때 필요한 문법 정리.
 
 class Point
 {
@@ -34,8 +33,8 @@ int main()
 
 
 	// #3. 객체의 갯수만큼 생성자가 호출됩니다.
-	Point arr1[5];						
-	Point arr2[5] = { {1,2},{2,3} };	
+	Point arr1[5];						 // 5번 with no arg
+	Point arr2[5] = { {1,2},{2,3} };	 // arg 2, no arg 3
 
 
 	// #4.

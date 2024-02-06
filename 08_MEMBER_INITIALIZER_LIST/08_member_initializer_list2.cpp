@@ -11,6 +11,7 @@ int main()
 	int b;
 	b = 10;		// 대입(assignment)
 
+	// primitive type, initialize, assignment are nearly all the same 
 
 	//========================================================
 	// std::string : class 문법으로 만들어져 있는 타입입니다.(STL)

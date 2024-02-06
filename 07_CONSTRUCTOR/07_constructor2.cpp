@@ -7,7 +7,8 @@ private:
 	std::string name;
 	int  age;
 public:
-	// 핵심 1. 생성자는 여러개 만들수 있다.
+	// 핵심 1. class 생성자는 여러개 만들수 있다.
+	// keypoint : same with class name  
 	Person(const std::string& n, int a)
 	{
 		std::cout << "생성자1 호출됨" << std::endl;

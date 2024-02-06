@@ -18,7 +18,9 @@ int main()
 
 	// 아래 코드의 결과를 예측해 보세요
 	std::cout << pt.x << std::endl; // ?
+	std::cout << &pt.x << std::endl; // ?
 	std::cout << pt.y << std::endl; // ?
+	std::cout << &pt.y << std::endl; // ?
 }
 
 

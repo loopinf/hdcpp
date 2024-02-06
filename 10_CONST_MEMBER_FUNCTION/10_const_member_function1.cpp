@@ -5,7 +5,7 @@ class Point
 public:
 	int x, y;
 
-	Point(int a = 0, int b = 0) : x{a}, y{b} {}
+	Point(int a, int b) : x{a}, y{b} {}
 
 	void set(int a, int b) { x = a; y = b; }
 
@@ -16,10 +16,12 @@ public:
 }; 
 int main() 
 {
-	Point p(1, 2);
+	// Point p(1, 2);
+	const Point p(1, 2); // const 객체
 
-	p.x = 10;		
-	p.set(10, 20);	
-	p.print();		
+	p.x = 10;		 // error. x  public but p is const object
+	p.set(10, 20);	// error
+	p.print();		// error why? 
+					// c	
 }
 

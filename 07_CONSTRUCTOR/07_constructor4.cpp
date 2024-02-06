@@ -13,7 +13,7 @@ class Rect
 {
 	Point leftTop;
 	Point rightBottom;
-public:
+public: l
 	Rect()
 	{
 		std::cout << "Rect()" << std::endl;

@@ -2,19 +2,21 @@
 
 class Point
 {
-	int x, y;
+	//  #1. field declared, not from constructor, literal 
+	int x = 0; // good code
+	int y{0};  // good code
 public:
-	// 생성자에서 멤버 데이타에 값을 넣는 방법
+	// 멤버 데이타에 값을 넣는 3 방법
 	
-	// #1. {} 안에서 대입
-	Point(int a, int b) 		
-	{
-		x = a; 
-		y = b;
-	}
+	// #0. constructor {} 안에서 대입
+	// Point(int a, int b) 	// bad!!! don't use	
+	// {
+	// 	x = a; 
+	// 	y = b;
+	// }
 
-	// #2. member initializer list 사용.
-	Point(int a, int b) : x(a), y(b) 
+	// #3. member initializer list 사용.
+	Point(int a, int b) : x(a), y(b)  // Good .
 	{
 	}
 
