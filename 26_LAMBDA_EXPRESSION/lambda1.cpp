@@ -27,6 +27,18 @@ int main()
 	// #4. lambda express
 	std::sort( v.begin(), v.end(), [](int a, int b){return a> b;});
 
+	// compiler will do below
+	class CompilerGeneratedName
+	{
+	public:
+		inline bool operator()(int a, int b) const 
+		{ return a > b; }
+	};
+
+	std::sort( v.begin(), v.end(), CompilerGeneratedName{});
+	// lambda expression : 
+	// 1. function object 
+
 
 }
 

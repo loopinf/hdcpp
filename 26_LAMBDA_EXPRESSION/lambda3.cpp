@@ -12,7 +12,10 @@ int main()
 	
 	// 람다 표현식 활용 2. auto 변수에 담아서 함수 처럼 사용
 
-	[](int a, int b) { return a + b;};
+	auto f = [](int a, int b) { return a + b;};
+	// class xxx{ operator()(){}}; xxx{};
+	int n1 = f(1,2);
+	int n2 = f(3,4);
 
 }
 

@@ -25,6 +25,8 @@ int main()
 
 	// 2. 비교정책으로 함수객체 사용시
 
+	// pros: cmp as many as you want, make 
+
 	Less    f1;
 	Greater f2;
 	std::sort(x, x + 10, f1);  // sort(int*, int*, Less)
