@@ -23,12 +23,18 @@ class Camera : public ICamera
 public:
     void take() { std::cout << "take picture" << std::endl; }
 };
+
 class HDCamera : public ICamera
 {
 public:
     void take() { std::cout << "take HD picture" << std::endl; }
 };
 
+class UHDcamera : public ICamera
+{
+public:
+    void take() { std::cout << "take UHD picture" << std::endl; }
+};
 
 int main()
 {
@@ -38,4 +44,6 @@ int main()
     p.use_camera(&c);
     HDCamera hc;
     p.use_camera(&hc); // take picture
+    UHDcamera uhc;
+    p.use_camera(&uhc); // take picture
 }
