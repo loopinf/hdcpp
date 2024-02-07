@@ -13,8 +13,19 @@ int main()
 	
 	// sort 하고 싶다면
 	
-	// #1. 비교 함수를 전달하지 않은 경우 - 오름차순으로 정렬
+	// #1. 비교 policy 를 전달하지 않은 경우 - 오름차순으로 정렬
 	std::sort( v.begin(), v.end() );  // 1,2,3,4,5,6,7,8,9,10
+
+	// #2. normal func, inline not possible
+	std::sort( v.begin(), v.end(), cmp );  // 1,2,3,4,5,6,7,8,9,10
+
+	// #3. function object
+	// std::less<int> f;
+	// std::sort( v.begin(), v.end(), f);
+
+	std::sort( v.begin(), v.end(), std::less<int>{});
+	// #4. lambda express
+	std::sort( v.begin(), v.end(), [](int a, int b){return a> b;});
 
 
 }

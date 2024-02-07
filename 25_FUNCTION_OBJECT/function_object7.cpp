@@ -15,18 +15,20 @@ int main()
 
 
 	// 1. 비교 정책으로 일반함수 사용시
+	//  pros: code memory 절약
+	//        
+	//  cons: inline이 안됨, cmp1, cmp2 함수가 호출되므로
 
-	std::sort(x, x + 10, cmp1);
+	std::sort(x, x + 10, cmp1);  // sort(int*, int*, bool(*)(int, int)) 
 	std::sort(x, x + 10, cmp2);
-
 
 
 	// 2. 비교정책으로 함수객체 사용시
 
 	Less    f1;
 	Greater f2;
-	std::sort(x, x + 10, f1); 
-	std::sort(x, x + 10, f2); 
+	std::sort(x, x + 10, f1);  // sort(int*, int*, Less)
+	std::sort(x, x + 10, f2);  // sort(int*, int*, Greater)
 }
 
 

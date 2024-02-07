@@ -11,4 +11,6 @@ int main()
 	auto ret1 = std::find(s.begin(), s.end(), 3);
 
 	//"뒤 => 앞" 순서로 검색하려면 ?
+	auto ret2 = std::find(s.rbegin(), s.rend(), 3);
 }
+// cppreference.com 

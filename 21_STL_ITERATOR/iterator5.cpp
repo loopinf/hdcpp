@@ -10,8 +10,8 @@ int main()
 	// auto p1 = c.begin(); 
 	// auto p2 = c.end();
 
-	auto p1 = c.begin(); 
-	auto p2 = c.end();
+	auto p1 = c.rbegin(); 
+	auto p2 = c.rend();
 
 	while (p1 != p2)
 	{

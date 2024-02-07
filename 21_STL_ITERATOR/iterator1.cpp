@@ -22,6 +22,7 @@ int main()
 	// p2 is not real pointer but ++ and dereference is possible
 
 	std::cout << *p2 << std::endl; // 1
+	// iterator is same usge   like a pointer 
 	
 
 

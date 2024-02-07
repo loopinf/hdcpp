@@ -12,10 +12,17 @@ int main()
 	// 컨테이너에서 3을 찾고 싶다.
 
 	// 방법 1. 멤버함수 find를 제공하자.
+	// pros : easy to use
+	// cons : 모든 컨테이너에 멤버함수로 제공해야 한다.
 	s.find(3);
 	v.find(3); 
 
 	// 방법 2. find 를 멤버가 아닌 일반 함수(템플릿)으로 제공하자.
+	// [first, last) 
 	auto ret1 = std::find(s.begin(), s.end(), 3);
 	auto ret2 = std::find(v.begin(), v.end(), 3);
 }
+
+// algorithm
+//  - general  
+// - STL       : std::find normal function
