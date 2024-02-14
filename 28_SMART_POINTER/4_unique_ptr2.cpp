@@ -6,16 +6,17 @@ int main()
 	// unique_ptr 정리
 
 	// 1. make_unique 로 사용하세요
-	std::unique_ptr<int> up1{new int};	//
-	std::unique_ptr<int> up2 = std::make_unique<int>(); // ?
+	// => 자원할당, 스마트포인터 생성은 "하나의 함수에서"
+	std::unique_ptr<int> up1{new int};	//  bas
+	std::unique_ptr<int> up2 = std::make_unique<int>(); // good
 	
 	auto up3 = std::make_unique<int>();
 
 
 	// 2. 자원을 독점합니다.
 	// => 하나의 객체는 하나의 스마트 포인터만 사용가능
-	std::unique_ptr<int> up4 = up1;				// ?
-	std::unique_ptr<int> up5 = std::move(up1);	// ?
+	std::unique_ptr<int> up4 = up1;				// error  복사생성자 삭제함 . 복사 X, 이동 O
+	std::unique_ptr<int> up5 = std::move(up1);	// 독점권을 가진상태에서 이동은 가능
 
 
 	// 3. 아주 가볍습니다.(raw pointer 와 거의 동일한 성능)
