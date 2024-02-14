@@ -7,7 +7,10 @@ class BaseMenu
 	std::string title;
 public:
 	BaseMenu(const std::string& title) : title{title} {}
-	virtual ~BaseMenu() {}
+	virtual ~BaseMenu() {} // 핵심!!, 만약 가상소멸자가 아니면, 
+							// delete PopupMenu 시
+							// PopupMenu 의 소멸자가 호출되지 않는 현상 발생
+							// 
 	
 	std::string get_title() const { return title; }
 
@@ -21,6 +24,9 @@ public:
 	MenuItem(const std::string& title, int id)
 		: BaseMenu{title}, id{id} {}
 
+	~MenuItem(){
+		std::cout << get_title() << "menu destroyed\n";
+	}
 	void command()
 	{
 		std::cout << get_title() << " 메뉴가 선택됨\n";
@@ -32,6 +38,12 @@ class PopupMenu : public BaseMenu
 	std::vector<BaseMenu*> v;  
 public:
 	PopupMenu(const std::string& title) : BaseMenu{title} {}
+
+	~PopupMenu(){
+		for (auto p: v)
+		delete p;
+		std::cout << get_title() << "menu destroyed\n";
+	}
 
 	void add(BaseMenu* m) { v.push_back(m); }
 
@@ -85,7 +97,9 @@ int main()
 	pm2->add(new MenuItem("UHD", 23));
 
 	root->command();
+	delete root;
 }
+
 
 
 

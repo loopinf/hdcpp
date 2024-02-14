@@ -4,4 +4,6 @@
 !*.*
 # c_cpp_properties.json
 # settings.json
-/.vscode/*
+.vscode/
+*.exe
+tmp/

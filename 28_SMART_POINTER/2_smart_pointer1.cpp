@@ -7,18 +7,23 @@ public:
 	~Car()    { std::cout << "~Car" << std::endl; }
 };
 
+// 아래 코드가 핵심
 class Ptr
 {
 	Car* obj;
 public:
-	Ptr(Car* p = 0) : obj(p) {}
+	Ptr(Car* p = nullptr) : obj(p) {}
 
 	Car* operator->() { return obj; }
 };
 int main()
 {
-	Ptr p = new Car; 
+	// p 는 객체임. pointer아님
+	// p 는 ptr 타입임. Car가 아님
+	Ptr p = new Car; // Ptr p(new Car)
+	// Ptr p;
 
+	// Ptr의 객체인 p를 Car* 처럼 씀
 	p->Go(); 
 }
 
