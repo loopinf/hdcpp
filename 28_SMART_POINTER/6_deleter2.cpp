@@ -14,4 +14,7 @@ int main()
 
     // shared_ptr 은 C++17 부터 [] 지원
     std::shared_ptr<int[]> sp2(new int[10]);
+
+    // make_shared 의 배열버전도 C++17부터 가능
+    auto sp = std::make_unique<int[]>(10);
 }
