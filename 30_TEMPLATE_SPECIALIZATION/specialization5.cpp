@@ -15,5 +15,5 @@ int main()
 
 	auto ret1 = p(1, 2);  // ok
 	auto ret2 = p(1, 2.1); // ?
-	
+
 }
