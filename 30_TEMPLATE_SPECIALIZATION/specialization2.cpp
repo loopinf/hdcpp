@@ -17,7 +17,9 @@ public:
 
 int main()
 {
-	vector<int>  v1(100);
-	vector<bool> v2(100);
+	vector<int>  v1(100);  // ok no problem. not a bad code
+	vector<bool> v2(100);  // ok, compile pass, memory structure
+							// 단점: sizeof(bool) * 100 이면 100 byte 임
+							// 100bit 만 할당해도 되지 않나요?
 }
 
