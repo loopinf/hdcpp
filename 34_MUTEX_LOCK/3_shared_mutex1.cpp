@@ -7,7 +7,7 @@
 using namespace std::literals;
 
 std::mutex m;
-int share_data = 0;
+int share_data = 0; // buffer 라고 하자
 
 void Writer()
 {
@@ -37,8 +37,12 @@ int main()
 {
     std::thread t1(Writer);
     std::thread t2(Reader, "A");
+    std::thread t3(Reader, "B");
+    std::thread t4(Reader, "C");
     t1.join();
     t2.join();
+    t3.join();
+    t4.join();
 }
 
 
