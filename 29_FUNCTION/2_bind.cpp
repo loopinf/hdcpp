@@ -1,5 +1,6 @@
 #include <iostream>
 #include <functional>
+using namespace std::placeholders;
 
 // C++ 함수 포인터를 대신하기 위해 만든 도구 : std::bind & std::function
 
@@ -13,14 +14,17 @@ void foo(int a, int b, int c, int d)
 
 int main()
 {
+	// foo 는 "4항 함수" : 인자의 갯수가 4개
 	foo(10, 20, 30, 40);
 
-	// auto f = std::bind(N항 함수, N개인자); 
+	//  1. std::bind 사용법
+		// auto f = std::bind(N항 함수, N개인자); 
+	// 반환값은 새로운 함수
 
 	auto f0 = std::bind(&foo, 10, 20, 30, 40); 
+	f0();
 	auto f2 = std::bind(&foo, 10, _1, 30, _2); 
-
-
-	auto f3 = std::bind(&foo, ? );
+	f2(8,4);
+	auto f3 = std::bind(&foo, 7, _2, _1, 2);
 	f3(9, 3); // "foo : 7, 3, 9, 2" 나오게 만들어 보세요	
 }
