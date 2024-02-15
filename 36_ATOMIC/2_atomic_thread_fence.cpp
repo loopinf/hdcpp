@@ -9,6 +9,7 @@ int b = 0;
 void foo()
 {
     a = b + 1;
+    std::atomic_thread_fence(std::memory_order_seq_cst);
     b = 1;
 }
 
