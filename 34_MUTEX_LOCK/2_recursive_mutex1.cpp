@@ -10,6 +10,7 @@ int share_data = 0;
 void foo()
 {
     m.lock();
+    m.lock();  // 소유자가 한번더?? lock 안됨.
     share_data = 100;
     std::cout << "using share_data" << std::endl;
     m.unlock();
