@@ -19,12 +19,26 @@ public:
 	{
 		// handler();
 		for (auto f : v)
-			f();
+			f(); // f는 결국 std::function 이므로, ()로 호출가능 
 	}
 };
+// ------
+void f0() {std::cout<< "f0\n";}
+void f1(int a) {}
+
+class Dialog 
+{
+public:
+	void close(int code) {}  // void close(Dialog* this, int code)
+};
+
 
 int main()
 {
-	Button b1, b2;
-	b1.click();		// 사용자가 버튼을 누를때 
+	Button b1 ;
+	b1.add_handler(&f0);
+	b1.add_handler(&f1);
+	Dialog dlg;
+	b1.add_handler(&Dialog::close);
+
 }
