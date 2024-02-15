@@ -33,6 +33,6 @@ int main()
 
     plus p4;  // C++17 부터 가능. T=void 이므로, plus<void>
 
-    // std::sort(v.begin(), v.end(), std::less<int>{});
-    // std::sort(v.begin(), v.end(), std::less{});
+    // std::sort(v.begin(), v.end(), std::less<int>{}); // 이렇게 오케이
+    // std::sort(v.begin(), v.end(), std::less{});   // 이렇게도 가능 
 }
