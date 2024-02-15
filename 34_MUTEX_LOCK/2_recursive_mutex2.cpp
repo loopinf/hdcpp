@@ -9,7 +9,8 @@ class Machine
     int shared_data = 0;
     int shared_data2 = 0;
 
-    std::mutex m;
+    // std::mutex m;
+    std::recursive_mutex m;
 public:
     void f1()
     {
@@ -20,7 +21,7 @@ public:
     void f2()
     {
         m.lock();
-        
+        f1(); // ?? 이경우, recursive_mutex 필요
         shared_data2 = 200;
         m.unlock();
     }
