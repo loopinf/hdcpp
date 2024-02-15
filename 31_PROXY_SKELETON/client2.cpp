@@ -17,7 +17,7 @@ int main()
 	// IPC몰라도 됨
 	Calc * c = new Calc;
 
-	int ret1 = c->Add(1,2); // 
+	int ret1 = c->Add(1,2); //  ipc , 
 	int ret2 = c->Sub(1,2);
 }
 // 위처럼 코드를 만들면
