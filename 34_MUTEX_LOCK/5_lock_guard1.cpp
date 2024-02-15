@@ -7,6 +7,15 @@ std::mutex m;
 //  C++ 격언 : 자원 반납은 함수 끝에서 하지마라
 //              생성자 / 소멸자에 의존해라. RAII
 
+
+template<typename T>
+struct lock_guard
+{
+    T& mtx;
+    lock_guard(T& m) : mtx{m} {m.lock();}
+    ~lock_guard()             {m.unlock();}
+};
+
 void goo()
 {
     m.lock();    
