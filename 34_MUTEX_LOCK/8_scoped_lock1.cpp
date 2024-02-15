@@ -4,19 +4,24 @@
 #include <mutex>
 using namespace std::literals;
 
-struct  Account
+struct Account
 {
-
+    std::mutex m;
     int money = 100;
 };
 
-void transfer(Account& acc1, Account& acc2, int cnt)
+void transfer(Account &acc1, Account &acc2, int cnt)
 {
+    acc1.m.lock();
+    acc2.m.lock();
+
     acc1.money -= cnt;
     acc2.money += cnt;
     std::cout << "finish transfer" << std::endl;
-}
 
+    acc1.m.unlock();
+    acc2.m.unlock();
+}
 
 int main()
 {
@@ -26,4 +31,3 @@ int main()
     t1.join();
     t2.join();
 }
-
