@@ -3,6 +3,8 @@
 #include <atomic>
 
 long x = 0;
+std::atomic<long> x = 0; // 전역변수이지만
+                        // 멀티쓰레드에 안전한 코드
 
 void foo()
 {
