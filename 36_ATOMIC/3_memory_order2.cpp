@@ -4,9 +4,10 @@
 std::atomic<int> x = 0;
 std::atomic<int> y = 0;
 
+// std::memory_order_relaxed  동기화만... reorder는 못막음
 void foo()
 {
-    int n1 = y.load(std::memory_order_relaxed);
+    int n1 = y.load(std::memory_order_relaxed); //  접근만 동기
     x.store(n1, std::memory_order_relaxed);
 }
 

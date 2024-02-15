@@ -10,12 +10,13 @@ void foo()
 {
     data1.store(100, std::memory_order_relaxed);
     data2.store(200, std::memory_order_relaxed);
-    flag.store(1, std::memory_order_relaxed);
+    flag.store(1, std::memory_order_release);
+    // acquire 이후에서는 이코드 이전을 읽을 수 있어야 함
 }
 
 void goo()
 {
-    if ( flag.load( std::memory_order_relaxed) > 0)
+    if ( flag.load( std::memory_order_acquire) > 0)
     {
         assert(data1.load(std::memory_order_relaxed) == 100);
         assert(data2.load(std::memory_order_relaxed) == 200);
