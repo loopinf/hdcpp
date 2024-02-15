@@ -37,7 +37,7 @@ int main()
 {
     std::thread t1(Writer);
     std::thread t2(Reader, "A");
-    std::thread t3(Reader, "B");
+    std::thread t3(Reader, "B");  // 읽는 동안에 다른애들도 읽을 수 있어야 함.
     std::thread t4(Reader, "C");
     t1.join();
     t2.join();
