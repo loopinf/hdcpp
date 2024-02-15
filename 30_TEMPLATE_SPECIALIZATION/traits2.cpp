@@ -2,7 +2,9 @@
 // T가 포인터인지 조사하는 기술
 template<typename T> struct is_pointer
 {
-	enum { value = false}; // why enum
+	bool value = true; // 1. C++11 이전에는 이렇게 초기화 안됨
+						// 2. 이렇게 하면 컴파일 시간 상수가 아닌 변수
+	enum { value = false}; // why enum >> C++11 이전에는 이코드 최선
 };
 template<typename T> struct is_pointer<T*>
 {
