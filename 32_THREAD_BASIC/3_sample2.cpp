@@ -68,16 +68,21 @@ void parallel_sum(IT first, IT last, RT& result)
     {
         IT end = std::next(start, block_size);
 
-        thread_vec[i] = std::thread(sum<std::vector<int>::iterator, int>,
+        thread_vec[i] = std::thread(
+            sum<std::vector<int>::iterator, int>,
             start, end, std::ref(result_vec[i]));
 
         start = end;
     }
+    // main thread will do this
     sum(start, last, result_vec[cnt_thread - 1]);
 
+    // main thread done
+    // 다른 모든 스레드의 종료 대기
     for (auto& t : thread_vec)
         t.join();
 
+    // 결과를 담는 vecotr의 모든 요소를 더하기 
     RT ret = std::accumulate(result_vec.begin(), result_vec.end(), 0);
 
     result = ret;
@@ -90,5 +95,6 @@ int main()
     init();
 
     int s = 0;
-    sum(v.begin(), v.end(), s);
+    // sum(v.begin(), v.end(), s);
+    parallel_sum(v.begin(), v.end(), s);
 }
