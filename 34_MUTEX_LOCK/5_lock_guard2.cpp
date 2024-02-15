@@ -7,6 +7,8 @@ std::mutex m;
 
 void foo()
 {
+	// C++ STL
+	// std::adopt_lock_t 모두 있습니다. 
 	std::lock_guard<std::mutex> lg(m);
 	std::cout << "using shared data" << std::endl;
 }
