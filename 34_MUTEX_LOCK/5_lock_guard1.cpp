@@ -18,9 +18,13 @@ struct lock_guard
 
 void goo()
 {
-    m.lock();    
+    lock_guard<std::mutex> g(m); // 생성자에서 m.lock() 
+                                    // 소멸자가 m.unlock()
+                                    // 예외 발생해도 g의 소멸자 호출됨
+    // m.lock();    
     std::cout << "using shared data" << std::endl;
-    m.unlock();
+    // throw 1;     
+    // m.unlock();
 }
 
 
