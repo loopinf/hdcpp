@@ -35,9 +35,14 @@ int main()
 	// 3. main thread 는 다른 작업 하다가
 
 	// 4. 결과가 필요하면, futures를 꺼내면 됨
-	int ret = ft.get(); // 결과가 있으면 바로 꺼냄
-						// 결과가 없으면, p.set_value 할때까지 대기
-						// ft.wait(시간)으로 특정시간 대기도 가능
+	try
+	{
+		int ret = ft.get(); // 결과가 있으면 바로 꺼냄
+							// 결과가 없으면, p.set_value 할때까지 대기
+							// ft.wait(시간)으로 특정시간 대기도 가능
 
-	std::cout <<
+		std::cout << 'dd\n';
+	}
+	catch(...) {}
+	
 }

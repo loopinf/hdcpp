@@ -2,6 +2,8 @@
 #include <thread>
 #include <future>
 
+// 아래 예제는 결국 promise 예제
+
 // 멀티 스레드를 위해 설계된 함수
 // => 아래처럼 promise 등을 인자로 받게 됩니다.
 void add(std::promise<int>& p, int a, int b)
