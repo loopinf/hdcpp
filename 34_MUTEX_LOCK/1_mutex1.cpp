@@ -9,7 +9,8 @@ void delay() { std::this_thread::sleep_for(20ms); }
 
 void foo(std::string_view name)
 {
-    int x = 0;
+    int x = 0;    // 지역변수는 thread당 하나임
+                    // 2개가 수행되면, 각각 사용
 
     for (int i = 0; i < 10; i++)
     {
