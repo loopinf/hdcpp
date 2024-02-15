@@ -7,12 +7,14 @@ std::mutex m;
 //  C++ 격언 : 자원 반납은 함수 끝에서 하지마라
 //              생성자 / 소멸자에 의존해라. RAII
 
+class adopt_lock_t{};
+adopt_lock_t adopt_lock;
 template <typename T>
 struct lock_guard
 {
     T &mtx;
     lock_guard(T &m) : mtx{m} { m.lock(); }
-    lock_guard(T &m, int n) : mtx{m} {}
+    lock_guard(T &m, adopt_lock_t n) : mtx{m} {}
     ~lock_guard() { m.unlock(); }
 };
 
@@ -23,7 +25,7 @@ void goo()
     {
         // lock은 다른 방법으로 했지만, unlock은 lock_guard로 하고 싶다.
         // m.unlock();
-        lock_guard<std::mutex> g(m);
+        lock_guard<std::mutex> g(m, adopt_lock);
     }
 }
 
