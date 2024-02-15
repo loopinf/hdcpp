@@ -11,7 +11,7 @@ using namespace std::literals;
 std::mutex m;
 int shared_data = -1; // 아직 데이터 없음
 
-// 2. 전역변수 생성
+// conditional_variable은 관례상 전역변수와 같이 사용됨
 std::condition_variable cv;
 
 void consumer()
