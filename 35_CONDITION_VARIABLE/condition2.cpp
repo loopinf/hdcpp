@@ -21,7 +21,10 @@ void consumer()
     std::unique_lock<std::mutex> u(m);
 
     // 4. 신호가 올때까지 대기
-    cv.wait(u);
+    cv.wait(u); // 1. u.unlock() 으로  lock을 풀고
+                // 2. cv의 신호를 대기
+                // 3. 신호가 오면 다시, u.lock() 하고
+                // 4. 아랫줄 실행
 
 
     std::cout << "consume : " << shared_data << std::endl;
