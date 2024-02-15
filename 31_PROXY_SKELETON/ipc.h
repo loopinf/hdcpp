@@ -19,6 +19,13 @@ int handler(int code, int param1, int param2)
 	return 0;
 }
 
+// int main()
+// {
+// 	//현재 프로세스를 ipc서버로 동작하게 하는 함수라고 가정
+// 	StartServer("Calc", // 서버이름
+// 				&handler); // client 가 요청을 보내면 호출될 함수 등록
+
+// }
 
 
 
