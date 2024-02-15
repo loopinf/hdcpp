@@ -21,7 +21,7 @@ void init()
 template<typename IT, typename RT>
 void sum(IT first, IT last, RT& result)
 {
-    result = std::accumulate(first, last, result);
+    result = std::accumulate(first, last, 0);
 }
 
 int main()
