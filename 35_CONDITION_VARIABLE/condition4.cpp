@@ -13,22 +13,24 @@ int shared_data = -1; // 아직 데이터 없음
 
 // conditional_variable은 관례상 전역변수와 같이 사용됨
 std::condition_variable cv;
+bool data_ready = false;
 
 void consumer()
 {
-    // 3. 소비자는 unique_lock으로 mutex 획득
-    // std::lock_guard<std::mutex> lg(m);
     std::unique_lock<std::mutex> u(m);
 
     // 4. 신호가 올때까지 대기
-    cv.wait(u); // 1. u.unlock() 으로  lock을 풀고
-                // 2. cv의 신호를 대기
-                // 3. 신호가 오면 다시, u.lock() 하고
-                // 4. 아랫줄 실행
+    cv.wait(u); // 무조건 신호를 대기
+    cv.wait(u, 함수); // 함수를 실행해서 결과가 참이면 대기 안함
+
+    cv.wait(u, []() { return data_ready == true;});
+    // 1. 함수를 실행해서 결과가 참이면 대기안함
+    // 2. 거짓이면 unlock 후 신호가 올때까지 대기
+    // 3. 신호가 오면 깨어나면 1번으로 이동
 
     std::cout << "consume : " << shared_data << std::endl;
 }
-// 생산자, 쓰기 전용
+
 void producer()
 {
     std::this_thread::sleep_for(10ms);
@@ -37,9 +39,7 @@ void producer()
         shared_data = 100;
         std::cout << "produce : " << shared_data << std::endl;
     }
-    // 생산자는 생산후 신호만 전달하면 됨
-    // 단점 : 소비자가 wait 하기전에 신호를 주는 경우
-    //          소비자가 나중에 wait하면 깨어날 수 없음
+    data_ready = true;
     cv.notify_one();
 
 }
