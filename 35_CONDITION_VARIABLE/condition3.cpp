@@ -36,7 +36,11 @@ void producer()
         shared_data = 100;
         std::cout << "produce : " << shared_data << std::endl;
     }
+    // 생산자는 생산후 신호만 전달하면 됨
+    // 단점 : 소비자가 wait 하기전에 신호를 주는 경우
+    //          소비자가 나중에 wait하면 깨어날 수 없음
     cv.notify_one();
+
 }
 int main()
 {
