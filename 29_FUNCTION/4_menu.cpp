@@ -2,7 +2,8 @@
 #include <string>
 #include <vector>
 #include <memory>
-
+#include <functional>
+using namespace std::placeholders;
 class BaseMenu
 {
 	std::string title;
@@ -57,14 +58,23 @@ public:
 class MenuItem : public BaseMenu
 {
 	int id;
+	using HANDLER = std::function<void()>;
+	std::vector<HANDLER> v;
+
 public:
-	MenuItem(const std::string& title, int id) : BaseMenu{title}, id{id} {}
+	void add_handler(HANDLER h) { v.push_back(h);}
+	MenuItem(const std::string& title, int id, HANDLER h = nullptr) : BaseMenu{title}, id{id}  {}
 
 	void command()
 	{
-		std::cout << get_title() << " 메뉴가 선택됨\n";
+		// std::cout << get_title() << " 메뉴가 선택됨\n";
+		for (auto f:v)
+		f();
+
 	}
 };
+
+void f0() { std::cout << "f0\n";}
 
 int main()
 {
@@ -75,7 +85,7 @@ int main()
 	root->add(pm1);
 	root->add(pm2); 
 
-	pm1->add(std::make_shared<MenuItem>("RED",   11));
+	pm1->add(std::make_shared<MenuItem>("RED",   11, &f0));
 	pm1->add(std::make_shared<MenuItem>("GREEN", 12));
 	pm1->add(std::make_shared<MenuItem>("BLUE",  13));
 

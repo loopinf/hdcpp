@@ -41,8 +41,11 @@ int main()
 	Dialog dlg;
 	b1.add_handler(std::bind(&Dialog::close, &dlg, 1));
 
-	b1.add_handler( [](){std::cout<<"lambda\N"});
+	b1.add_handler( [](){std::cout<<"lambda\n"});
 
 	b1.click();
 
 }
+// C++26에서 network 라이브러리가 표준에 추가된 예정
+// => boost 라이브러리는 asio 를 약간 수정해서 추가 예정
+// => asio 코드는 대부분 std::bind 와 std::function으로 작업
