@@ -6,8 +6,19 @@
 #include <string_view>
 using namespace std::literals;
 
-std::mutex m;
+// 1. 읽는 동안 쓸 수 없다.
+// 2. 쓰는 동안 쓸 수 없다. 
+// 3. 쓰는 동안 읽을 수 없다.
+
+// 4. 읽는 동안 읽어도 된다!!
+
+// std::mutex m;
+std::shared_mutex m;
 int share_data = 0; // buffer 라고 하자
+
+// m.lock() 다른 스레드의 lock, lock_shared() 모두 대기
+// m.lock_shared : 다른 스레드의 lock은 대기
+//                  lock_shared 허용
 
 void Writer()
 {
