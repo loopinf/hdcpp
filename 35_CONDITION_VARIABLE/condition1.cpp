@@ -9,6 +9,10 @@ int shared_data = -1; // 아직 데이터 없음
 
 // std::mutex : 동시접근을 막음
 
+// 단점 : 생산자가 생산하기 전에 읽어가면 안됨
+// => 생성자가 생산 후 신호를 보내야함
+// => std::condition_variable
+
 
 // 소비자, 읽기 전용
 void consumer()
