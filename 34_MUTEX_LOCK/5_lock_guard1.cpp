@@ -12,20 +12,18 @@ struct lock_guard
 {
     T &mtx;
     lock_guard(T &m) : mtx{m} { m.lock(); }
+    lock_guard(T &m, int n) : mtx{m} {}
     ~lock_guard() { m.unlock(); }
 };
 
 void goo()
 {
-
+    // lock_guard<std::mutex> g(m);
+    if (m.try_lock())
     {
-        lock_guard<std::mutex> g(m); // 생성자에서 m.lock()
-                                     // 소멸자가 m.unlock()
-                                     // 예외 발생해도 g의 소멸자 호출됨
-        // m.lock();
-        std::cout << "using shared data" << std::endl;
-        // throw 1;
+        // lock은 다른 방법으로 했지만, unlock은 lock_guard로 하고 싶다.
         // m.unlock();
+        lock_guard<std::mutex> g(m);
     }
 }
 
