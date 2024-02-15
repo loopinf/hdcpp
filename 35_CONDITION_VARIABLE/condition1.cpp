@@ -5,13 +5,18 @@
 using namespace std::literals;
 
 std::mutex m;
-int shared_data = 0;
+int shared_data = -1; // 아직 데이터 없음
 
+// std::mutex : 동시접근을 막음
+
+
+// 소비자, 읽기 전용
 void consumer()
 {
     std::lock_guard<std::mutex> lg(m);
     std::cout << "consume : " << shared_data << std::endl;
 }
+// 생산자, 쓰기 전용
 void producer()
 {
     std::this_thread::sleep_for(10ms);
