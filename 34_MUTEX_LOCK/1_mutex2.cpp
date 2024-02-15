@@ -9,9 +9,16 @@ int share_data = 0;
 
 void foo()
 {
-    m.lock();
-    share_data = 100;
-    m.unlock();
+    // m.lock();
+    if (m.try_lock()) // 뮤텍스 획득못했으면, 딴일해..
+    {
+        share_data = 100;
+        m.unlock();
+    }
+    else
+    {
+
+    }
 }
 
 int main()
