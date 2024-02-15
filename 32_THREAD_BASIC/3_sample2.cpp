@@ -60,7 +60,7 @@ void parallel_sum(IT first, IT last, RT& result)
 
     const std::size_t block_size = cnt_element / cnt_thread;
     std::vector<std::thread> thread_vec(cnt_thread - 1);
-    std::vector<RT> result_vec(cnt_thread);
+    std::vector<RT> result_vec(cnt_thread);   // 각 스레드가 수행한 결과를 담을 vector
 
     IT start = first;
 
