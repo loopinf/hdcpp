@@ -60,8 +60,14 @@ int main()
 {
 	vector<bool> v1(100);
 
-	v1[3] = true;
+	v1[3] = true;    // bit_proxy_임시객체 =  true
+						// 임시객체.operator=(true);
+						// 즉. bit_proxy 클래스에 대입연산자가 있어야 함
 
-	bool b = v1[3];
+	bool b = v1[3];  // boll b = bit_proxy_임시객체
+						// boll b = 임시객체.operator bool() 
+						// 즉. bit_proxy 클래스에는 operator bool() 이 있어야 함 
 }
 
+// google "C++ Idioms"
+// C++ 진영에서 사용되는 전형적인 기술 (코딩패턴)에 이름 붙인거
