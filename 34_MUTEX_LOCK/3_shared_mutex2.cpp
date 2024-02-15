@@ -16,8 +16,8 @@ using namespace std::literals;
 std::shared_mutex m;
 int share_data = 0; // buffer 라고 하자
 
-// m.lock() 다른 스레드의 lock, lock_shared() 모두 대기
-// m.lock_shared : 다른 스레드의 lock은 대기
+// m.lock()        :다른 스레드의 lock, lock_shared() 모두 대기
+// m.lock_shared() : 다른 스레드의 lock은 대기
 //                  lock_shared 허용
 
 void Writer()
@@ -36,10 +36,10 @@ void Reader(std::string_view name)
 {
     while (1)
     {
-        m.lock();
+        m.lock_shared();
         std::cout << "Reader(" << name << ") : " << share_data << std::endl;
         std::this_thread::sleep_for(500ms);
-        m.unlock();
+        m.unlock_shared();
         std::this_thread::sleep_for(10ms);
     }
 }
