@@ -12,8 +12,11 @@ struct Account
 
 void transfer(Account &acc1, Account &acc2, int cnt)
 {
-    acc1.m.lock();
-    acc2.m.lock();
+    // acc1.m.lock();
+    // acc2.m.lock();
+    // 2개 이상의 mutex lock을 하려면
+    // deadlock 회피 알고리즘으로 lock해야 함
+    std::lock( acc1.m, acc2.m);
 
     acc1.money -= cnt;
     acc2.money += cnt;
