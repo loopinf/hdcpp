@@ -37,8 +37,12 @@ int main()
 {
 	Button b1 ;
 	b1.add_handler(&f0);
-	b1.add_handler(&f1);
+	b1.add_handler(std::bind(&f1, 11));  // 11을 버튼id라고 생각하면 됨
 	Dialog dlg;
-	b1.add_handler(&Dialog::close);
+	b1.add_handler(std::bind(&Dialog::close, &dlg, 1));
+
+	b1.add_handler( [](){std::cout<<"lambda\N"});
+
+	b1.click();
 
 }
