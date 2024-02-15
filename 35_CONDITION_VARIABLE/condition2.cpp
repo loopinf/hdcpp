@@ -3,21 +3,27 @@
 #include <mutex>
 #include <chrono>
 using namespace std::literals;
+// 1. 헤더파일
+#include <condition_variable>
 
 std::mutex m;
 int shared_data = -1; // 아직 데이터 없음
 
-// std::mutex : 동시접근을 막음
-
-// 단점 : 생산자가 생산하기 전에 읽어가면 안됨
-// => 생성자가 생산 후 신호를 보내야함
-// => std::condition_variable
+// 2. 전역변수 생성
+std::condition_variable cv;
 
 
-// 소비자, 읽기 전용
+
 void consumer()
 {
-    std::lock_guard<std::mutex> lg(m);
+    // 3. 소비자는 unique_lock으로 mutex 획득
+    // std::lock_guard<std::mutex> lg(m);
+    std::unique_lock<std::mutex> u(m);
+
+    // 4. 신호가 올때까지 대기
+    cv.wait(u);
+
+
     std::cout << "consume : " << shared_data << std::endl;
 }
 // 생산자, 쓰기 전용
