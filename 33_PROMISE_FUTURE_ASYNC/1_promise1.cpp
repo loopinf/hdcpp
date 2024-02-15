@@ -23,7 +23,16 @@ int main()
 	int ret1 = add1(1, 2);
 
 	// 핵심 2. add1 을 스레드로 수행하면 결과를 받을 방법이 없음
-	std::thread t(&add1, 1, 2);
+	// std::thread t(&add1, 1, 2);
+
+	// 핵심 3. out param 
+	int s= 0;
+	std::thread t1(&add2, 1,2, std::ref(s));
+
+	t1.join();   // thread 의 종료를 기다림. 
+					// 연산의 종료만 딱 기다리면 더 좋을 텐데
+
+	std::cout << s << std::endl;
 
 
 }
